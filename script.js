@@ -76,3 +76,32 @@ const idAEliminar = 2; // ID del contacto a eliminar
 borrarContacto(idAEliminar);
 console.log("Lista después de eliminar un contacto:");
 imprimirContactos();
+
+// Función para actualizar un contacto existente en la lista
+function actualizarContacto(id, nuevoContacto) {
+    const index = listaContactos.findIndex(contacto => contacto.id === id);
+    if (index !== -1) {
+        listaContactos[index] = { ...listaContactos[index], ...nuevoContacto };
+        console.log(`¡${listaContactos[index].nombres} ${listaContactos[index].apellidos} ha sido actualizado en la lista de contactos!`);
+    } else {
+        console.log(`No se encontró ningún contacto con el ID ${id} en la lista de contactos.`);
+    }
+}
+
+// Ejemplo de uso:
+const idAActualizar = 1; // ID del contacto a actualizar
+const nuevoDatosContacto = {
+    nombres: "Lionel Andrés",
+    apellidos: "Messi Cuccittini",
+    telefono: "+987654321",
+    ubicaciones: [
+        {
+            ciudad: "París",
+            direccion: "Avenue des Champs-Élysées"
+        }
+    ]
+};
+actualizarContacto(idAActualizar, nuevoDatosContacto);
+console.log("Lista después de actualizar un contacto:");
+imprimirContactos();
+
